@@ -238,137 +238,93 @@ function clearHistory() {
 </script>
 
 <style>
-.shuca{
-    border-radius: 100px;
-    color:#cab65b;
-    background-color: #efefef;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px; /* 調整最大寬度以適應手機螢幕 */
     margin: 0 auto;
+    padding: 10px;
+}
+
+.shuca {
+    border-radius: 100px;
+    color: #cab65b;
+    background-color: #efefef;
     text-align: center;
     font-size: 16px;
     line-height: 40px;
     height: 130px;
-    width: 180px;
-    left: 45%;
-    opacity:50%;
+    width: 100%; /* 寬度調整為100% */
+    max-width: 300px; /* 最大寬度 */
+    margin: 0 auto;
+    opacity: 50%;
     -webkit-transition: opacity 0.3s ease-in-out;
     -moz-transition: opacity 0.3s ease-in-out;
     -o-transition: opacity 0.3s ease-in-out;
     transition: opacity 0.3s ease-in-out;
 }
- .shuca:hover{
-    color:#e7cd5a;
-    background-color:#754e96;
+
+.shuca:hover {
+    color: #e7cd5a;
+    background-color: #754e96;
     opacity: 80%;
- }
-
-
-
+}
 
 #result {
     font-size: 16px;
     color: #333;
     margin: 0 auto;
-    width: 180px;
+    width: 100%; /* 寬度調整為100% */
+    max-width: 300px; /* 最大寬度 */
     text-align: center;
     margin-top: 30px;
     padding: 10px;
     border: 0px solid #ccc;
     background-color: #efefef;
     border-radius: 100px;
-    opacity:50%;
+    opacity: 50%;
     -webkit-transition: opacity 0.3s ease-in-out;
     -moz-transition: opacity 0.3s ease-in-out;
     -o-transition: opacity 0.3s ease-in-out;
     transition: opacity 0.3s ease-in-out;
 }
 
-#result:hover{
-    color:#754e96;
-    background-color:#efefef;
+#result:hover {
+    color: #754e96;
+    background-color: #efefef;
     opacity: 80%;
- }
-
-#result p {
-    margin: 0;
-    padding: 0;
-}
-
-#result ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-#result li {
-    margin: 5px 0;
 }
 
 #historyContainer {
+    width: 100%;
+    max-width: 600px; /* 調整最大寬度以適應手機螢幕 */
+    margin: 0 auto;
     opacity: 80%;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
     font-size: 22px;
     text-align: center;
-    line-height:55px;
+    line-height: 55px;
     overflow-y: auto; /* 允許垂直滾動 */
-    border: none solid #ccc; /* 邊框 */
+    border: none; /* 邊框 */
     padding: 10px; /* 內距 */
     margin-top: 20px; /* 上方外距 */
     background-color: #fff; /* 背景顏色 */
     transition: height .2s linear, width .2s linear, opacity 0.3s ease-in-out, border-radius .5s ease-in;
-
-    &::-webkit-scrollbar {
-
-        width: 7px;
-  
-      }
-  
-      &::-webkit-scrollbar-button {
-  
-        background: transparent;
-  
-        border-radius: 4px;
-  
-      }
-  
-      &::-webkit-scrollbar-track-piece {
-  
-        background: transparent;
-  
-      }
-  
-      &::-webkit-scrollbar-thumb {
-  
-        border-radius: 4px;
-  
-        background-color: #0000000c;
-  
-        border: 0px solid slategrey;
-  
-      }
-  
-      &::-webkit-scrollbar-track {
-  
-        box-shadow: transparent;
-  
-      }
 }
-#historyContainer:hover{ 
+
+#historyContainer:hover {
     opacity: 100%;
- }
-
-#historyTable{
-    opacity: 0%;
-    margin-top: 10px; /* 頂部內距 */
-    margin-left: auto; /* 左側外距為自動 */
-    margin-right: auto; /* 右側外距為自動 */
-    -webkit-transition: opacity 0.3s ease-in-out;
-    -moz-transition: opacity 0.3s ease-in-out;
-    -o-transition: opacity 0.3s ease-in-out;
-    transition: opacity 0.3s ease-in-out;
-
 }
+
 #historyTable {
+    width: 100%;
+    max-width: 600px; /* 調整最大寬度以適應手機螢幕 */
     border-collapse: collapse; /* 合併邊框 */
     margin-top: 10px; /* 頂部內距 */
     margin-left: auto; /* 左側外距為自動 */
@@ -376,7 +332,6 @@ function clearHistory() {
     opacity: 80%;
     transition: opacity 0.3s ease-in-out;
 }
-
 
 #historyTable th, #historyTable td {
     border: 1px solid #ccc; /* 邊框顏色 */
@@ -405,63 +360,71 @@ function clearHistory() {
     background-color: #f5f5f5; /* 滑鼠懸停背景顏色 */
 }
 
- .btnQ,
- .btnQ:hover,
- .btnQ:focus {
-     margin-right: 7px;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     position: relative;
-     z-index: 1;
-     width: 30px;
-     height: 30px;
-     border-radius: 50%;
-     border: none;
-     background: #e7cd5a;
-     color: #1a1a1a;
-     font-size: 10px;
-     transition: box-shadow 400ms cubic-bezier(0.2, 0, 0.7, 1), transform 200ms cubic-bezier(0.2, 0, 0.7, 1);
- }
- .btnQ:hover {
-     transform: rotate(45deg);
-     box-shadow: 0 0 1px 5px #e7cd5a50, 0 0 1px 10px #e7cd5a30, 0 0 1px 15px #e7cd5a10;
- }
+.btnQ,
+.btnQ:hover,
+.btnQ:focus {
+    margin-right: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background: #e7cd5a;
+    color: #1a1a1a;
+    font-size: 10px;
+    transition: box-shadow 400ms cubic-bezier(0.2, 0, 0.7, 1), transform 200ms cubic-bezier(0.2, 0, 0.7, 1);
+}
 
- .btnB,
- .btnB:hover,
- .btnB:focus {
-     margin-right: 10px;
-     margin-left: 10px;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     position: relative;
-     z-index: 1;
-     opacity: 50%;
-     width: 30px;
-     height: 30px;
-     border-radius: 50%;
-     border: none;
-     background: #ca8aff;
-     color: #754e96;
-     font-size: 15px;
-     transition: box-shadow 400ms cubic-bezier(0.2, 0, 0.7, 1), transform 200ms cubic-bezier(0.2, 0, 0.7, 1);
- }
+.btnQ:hover {
+    transform: rotate(45deg);
+    box-shadow: 0 0 1px 5px #e7cd5a50, 0 0 1px 10px #e7cd5a30, 0 0 1px 15px #e7cd5a10;
+}
 
- .btnB:hover {
-     transform: rotate(45deg);
-     box-shadow: 0 0 1px 5px #ca8aff50, 0 0 1px 10px #ca8aff30, 0 0 1px 15px #ca8aff10;
- }
+.btnB,
+.btnB:hover,
+.btnB:focus {
+    margin-right: 10px;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    opacity: 50%;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background: #ca8aff;
+    color: #754e96;
+    font-size: 15px;
+    transition: box-shadow 400ms cubic-bezier(0.2, 0, 0.7, 1), transform 200ms cubic-bezier(0.2, 0, 0.7, 1);
+}
 
- a{text-decoration:none}
- a:hover{text-decoration:none}
+.btnB:hover {
+    transform: rotate(45deg);
+    box-shadow: 0 0 1px 5px #ca8aff50, 0 0 1px 10px #ca8aff30, 0 0 1px 15px #ca8aff10;
+}
 
- .inline-elements {
+.inline-elements {
     display: flex;
     align-items: center;
     align-items: center;
     justify-content: center;
+}
+
+#drawCount {
+    margin-right: 5px;
+}
+
+@media (max-width: 600px) {
+    .shuca, #result, #historyContainer, #historyTable {
+        width: 90%;
+    }
 }
 
 
