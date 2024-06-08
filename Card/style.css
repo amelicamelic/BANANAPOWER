@@ -1,0 +1,51 @@
+/* style.css */
+
+/* 開屏頁面的背景樣式 */
+body.splashScreen {
+  }
+  
+  /* 主畫面的背景樣式 */
+body {
+    margin: 0;
+    overflow: hidden; /* 隱藏滾動條 */
+    background: url('./test/StickmenJack.gif') top/cover no-repeat; /* 使用主畫面的背景圖片 */
+    color: #fff;
+
+    font-family: Arial, sans-serif;
+  }
+  
+  /* 開屏頁面樣式 */
+  #splashScreen {
+    background-color: rgba(0, 0, 0, 0.5); /* 開屏頁面的半透明背景 */
+    margin: 0;
+    overflow: hidden; /* 隱藏滾動條 */
+    background: url('./test/banana\ background.png') center/cover no-repeat; /* 使用開屏頁面的背景圖片 */
+    color: #fff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+  }
+  
+  #enterButton {
+    background-color: #fff;
+    color: #333;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  #enterButton:hover {
+    background-color: #eee;
+  }
+  
+  /* 主畫面樣式 */
+  #mainPage {
+    display: none;
+    /* 添加其他主畫面元素的樣式 */
+  }
+  

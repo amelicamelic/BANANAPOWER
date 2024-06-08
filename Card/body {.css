@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    overflow: hidden; /* 隱藏滾動條 */
+    background: #333 url('./test/banana\ background.png') center/cover no-repeat; /* 使用你的背景圖片 */
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  #splashScreen {
+    text-align: center;
+  }
+
+  #enterButton {
+    background: url('./test/banana.png') center/cover no-repeat; /* 使用你的按鈕圖片 */
+    width: 150px;
+    height: 50px;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease; /* 添加 hover 效果 */
+  }
+
+  #enterButton:hover {
+    background: url('./test/StickmenJack.gif') center/cover no-repeat; /* 使用你的 hover 按鈕圖片 */
+  }

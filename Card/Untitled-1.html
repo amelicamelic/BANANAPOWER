@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Splash Screen</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<!-- Splash Screen Content -->
+<div id="splashScreen">
+  <h1>Welcome to Your Website</h1>
+  <button onclick="startMainScreen()">Enter</button>
+</div>
+
+<!-- Main Page Content (Initially Hidden) -->
+<div id="mainPage" class="mainPage" style="display:none;">
+  <h2>Main Page Content</h2>
+  <button onclick="playPauseMusic()">Play/Pause Music</button>
+  <button onclick="playNextMainMusic()">playNextMainMusic</button>
+</div>
+
+<!-- Audio Element for Main Page -->
+<audio id="mainMusic" loop>
+  Your browser does not support the audio element.
+</audio>
+
+<script src="./Untitled-1.js"></script>
+
+</body>
+</html>

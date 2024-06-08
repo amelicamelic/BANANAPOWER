@@ -1,0 +1,267 @@
+<html>
+
+<head>
+    <title>BANANA POWER</title>
+    <link rel="icon" href="./test/banana.ico">
+    <link rel="stylesheet" href="./test/style.css">
+    <meta charset="UTF-8">
+    <meta name="author" content="Tomai">
+    <mata name="viewport" content="width=device-width, initial-scale=1,0"></mata>
+</head>
+<body>
+<div><h1>BANANA POWER</h1></div>
+ 
+<div class="shuca">
+  <label for="groupSelect">▶</label>
+  <select id="groupSelect">
+      <option value="group1">1 ★綠箱</option>
+      <option value="group2">2 ★藍箱</option>
+      <option value="group3">3 ★紫箱</option>
+      <option value="group4">4 ★橙箱</option>
+      <option value="group5">5 ★金箱</option>
+  </select>
+  <dt class="inline-elements"><button onclick="draw(1)" class="btnB">㊀</button>
+  <button onclick="draw(10)" class="btnB">㊉</button><br></dt>
+  <dt class="inline-elements">
+    <button onclick="drawCustom()" class="btnQ">★</button>
+    <input type="number" id="drawCount" min="1" value="5" style="width: 40px;">
+    <label for="drawCount">箱</label>
+</dt>
+</div>
+
+<div id="result"></div>
+<div id="historyContainer">
+  <h2 href="javascript:void(0)" >記錄</h2>
+  <dt><button href="javascript:void(0)" class="btnQ" onclick="clearHistory()"style="margin: 0 auto;">×</button></dt>
+  <table id="historyTable" border="1">
+      <thead>
+          <tr>
+              <th style="width: 100px;">箱子</th>
+              <th style="width: 300px;">結果</th>
+          </tr>
+      </thead>
+      <tbody>
+      </tbody>
+  </table>
+</div>
+
+<div id="sample"></div>
+
+<div class="gogogo"><img src="./test/banana.png" id="icon" /></div>
+<script>
+    var icon = document.querySelector("#icon");
+
+    icon.onclick = () => {
+      document.body.classList.toggle("dark-mode");
+      if (document.body.classList.contains("dark-mode")) {
+        icon.src = "./test/banana.png";
+      } else {
+        icon.src = "./test/banana.png";
+      }
+    };
+</script>
+
+<script>
+  const groups = {
+      group1: [
+          { name: '停止的時鐘', probability: 20.25 },
+          { name: '損壞的陶器', probability: 20.25 },
+          { name: '美好的事物', probability: 20 },
+          { name: '靈素', probability: 15 },
+          { name: '精巧的機械', probability: 3 },
+          { name: '複雜的機械', probability: 3 },
+          { name: '簡單的機械', probability: 3 },
+          { name: '大齒輪', probability: 3 },
+          { name: '機油', probability: 3 },
+          { name: '銅礦', probability: 5 },
+          { name: '鐵礦', probability: 3 },
+          { name: '銀礦', probability: 1 },
+          { name: '咒術書', probability: 0.1 },
+          { name: '黑魔法書', probability: 0.1 },
+          { name: '精致的燒杯', probability: 0.1 },
+          { name: '雪茄', probability: 0.1 },
+          { name: '真理之眼', probability: 0.1 }
+      ],
+      group2: [
+          { name: '美好的事物', probability: 15 },
+          { name: '靈素', probability: 10 },
+          { name: '精巧的機械', probability: 8 },
+          { name: '複雜的機械', probability: 8 },
+          { name: '簡單的機械', probability: 8 },
+          { name: '大齒輪', probability: 8 },
+          { name: '機油', probability: 8 },
+          { name: '銅礦', probability: 10 },
+          { name: '鐵礦', probability: 8 },
+          { name: '銀礦', probability: 3 },
+          { name: '生鏽的項鏈', probability: 1.8 },
+          { name: '碎裂的耳環', probability: 1.8 },
+          { name: '變形的戒指', probability: 1.8 },
+          { name: '黯淡的手鐲', probability: 1.8 },
+          { name: '貴金屬耳釘', probability: 1.8 },
+          { name: '琥珀', probability: 0.8 },
+          { name: '黑珍珠', probability: 0.8 },
+          { name: '鈦合金', probability: 0.8 },
+          { name: '鵰蛋', probability: 0.8 },
+          { name: '記憶合金', probability: 0.8 }
+      ],
+      group3: [
+          { name: '生鏽的項鏈', probability: 13 },
+          { name: '碎裂的耳環', probability: 13 },
+          { name: '變形的戒指', probability: 13 },
+          { name: '黯淡的手鐲', probability: 13 },
+          { name: '貴金屬耳釘', probability: 13 },
+          { name: '鏽塊', probability: 8 },
+          { name: '金礦', probability: 8 },
+          { name: 'EXP +5%', probability: 3 },
+          { name: 'JOB +5%', probability: 3 },
+          { name: '琥珀', probability: 1.5 },
+          { name: '黑珍珠', probability: 1.5 },
+          { name: '鈦合金', probability: 1.5 },
+          { name: '鵰蛋', probability: 1.5 },
+          { name: '記憶合金', probability: 1.5 },
+          { name: '蝙蝠翅膀', probability: 1 },
+          { name: '野豬的牙', probability: 1 },
+          { name: '野豬的牙', probability: 1 },
+          { name: '狼的毛皮', probability: 1 },
+          { name: '老鼠尾巴', probability: 1 },
+          { name: '禁書', probability: 0.5 }
+      ],
+      group4: [
+          { name: '琥珀', probability: 9 },
+          { name: '黑珍珠', probability: 9 },
+          { name: '鈦合金', probability: 9 },
+          { name: '鵰蛋', probability: 9 },
+          { name: '記憶合金', probability: 9 },
+          { name: '蝙蝠翅膀', probability: 8 },
+          { name: '野豬的牙', probability: 8 },
+          { name: '野豬的牙', probability: 8 },
+          { name: '老鷹的喙', probability: 8 },
+          { name: '狼的毛皮', probability: 8 },
+          { name: '老鼠尾巴', probability: 8 },
+          { name: '禁書', probability: 5 },
+          { name: 'EXP +10%', probability: 2.5 },
+          { name: 'JOB +10%', probability: 2.5 },
+          { name: '眼球', probability: 1 },
+          { name: '腦', probability: 1 },
+          { name: '舌頭', probability: 1 },
+          { name: '手指', probability: 1 },
+          { name: '耳朵', probability: 1 }
+      ],
+      group5: [
+          { name: 'EXP +10%', probability: 5 },
+          { name: 'JOB +10%', probability: 5 },
+          { name: '禁書', probability: 20 },
+          { name: '眼球', probability: 11.5 },
+          { name: '腦', probability: 11.5 },
+          { name: '舌頭', probability: 11.5 },
+          { name: '手指', probability: 11.5 },
+          { name: '耳朵', probability: 11.5 },
+          { name: '咒術書', probability: 2.5 },
+          { name: '黑魔法書', probability: 2.5 },
+          { name: '精致的燒杯', probability: 2.5 },
+          { name: '雪茄', probability: 2.5 },
+          { name: '真理之眼', probability: 2.5 }
+      ]
+  };
+
+
+   function draw(times) {
+      const groupSelect = document.getElementById('groupSelect').value;
+      const items = groups[groupSelect];
+      
+      let total = 0;
+      items.forEach(item => {
+          total += item.probability;
+      });
+
+      let results = [];
+      for (let t = 0; t < times; t++) {
+          const rand = Math.random() * total;
+          let sum = 0;
+
+          for (let i = 0; i < items.length; i++) {
+              sum += items[i].probability;
+              if (rand <= sum) {
+                  results.push(items[i].name);
+                  break;
+              }
+          }
+      }
+
+      displayResults(results);
+      addToHistory(groupSelect, results);
+  }
+
+  function drawCustom() {
+      const times = parseInt(document.getElementById('drawCount').value);
+      if (times > 0) {
+          draw(times);
+      } else {
+          alert('請輸入正確的抽卡次數');
+      }
+  }
+
+function displayResults(results) {
+const resultDiv = document.getElementById('result');
+resultDiv.innerHTML = '';
+if (results.length === 1) {
+  resultDiv.innerText = ` ${results[0]}`;
+} else {
+  resultDiv.innerHTML = '<p></p>';
+  const ul = document.createElement('ul');
+
+  // Combine same items into 'item × quantity'
+  const itemMap = {};
+  results.forEach(result => {
+      if (itemMap[result]) {
+          itemMap[result]++;
+      } else {
+          itemMap[result] = 1;
+      }
+  });
+
+  // Format results as 'item × quantity'
+  for (const item in itemMap) {
+      const li = document.createElement('li');
+      li.innerText = `${item} × ${itemMap[item]}`;
+      ul.appendChild(li);
+  }
+
+  resultDiv.appendChild(ul);
+}
+}
+  function addToHistory(groupSelect, results) {
+const historyTable = document.getElementById('historyTable').getElementsByTagName('tbody')[0];
+const newRow = historyTable.insertRow();
+const cellGroup = newRow.insertCell(0);
+const cellResults = newRow.insertCell(1);
+cellGroup.innerText = document.querySelector(`#groupSelect option[value="${groupSelect}"]`).innerText;
+
+// Combine same items into 'item × quantity'
+const itemMap = {};
+results.forEach(result => {
+  if (itemMap[result]) {
+      itemMap[result]++;
+  } else {
+      itemMap[result] = 1;
+  }
+});
+
+// Format results as 'item × quantity' and use commas as separators
+const formattedResults = [];
+for (const item in itemMap) {
+  formattedResults.push(`${item} × ${itemMap[item]}`);
+}
+
+cellResults.innerText = formattedResults.join('、');
+}
+
+function clearHistory() {
+      const historyTable = document.getElementById('historyTable').getElementsByTagName('tbody')[0];
+      historyTable.innerHTML = '';
+  }
+</script>
+
+</body> 
+
+</html>
